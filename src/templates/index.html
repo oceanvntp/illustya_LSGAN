@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いらすとやジェネレーター</title>
+</head>
+<style>
+    #wrapper{
+        text-align: center;
+    }
+    #image{
+        text-align:center;
+    }
+</style>
+
+<body>
+    <div id="wrapper">
+        <h1>いらすとや Generater</h1>
+        <h2>下の設定を入力してください</h2>
+        <form method="post">
+            {{ forms.csrf_token }}
+
+            {{ forms.Seed.label }}<br>
+            {{ forms.Seed(value=0) }}<br>
+            {% for error in forms.Seed.errors %}
+            <div>{{ error }}</div>
+            {% endfor %}<br>
+
+            {{ forms.Threshold.label }}<br>
+            {{ forms.Threshold(value=0.5) }}<br>
+            {% for error in forms.Threshold.errors%}
+            <div>{{ error }}</div>
+            {% endfor %}<br> 
+            
+            {{ forms.Repeat.label }}<br>
+            {{ forms.Repeat(value=5) }}<br>
+            {% for error in forms.Repeat.errors%}
+            <div>{{ error }}</div>
+            {% endfor %}<br>
+
+            {{ forms.MaxGenerate.label }}<br>
+            {{ forms.MaxGenerate(value=10000) }}<br>
+            {% for error in forms.MaxGenerate.errors%}
+            <div>{{ error }}</div>
+            {% endfor %}<br>
+
+            {{ forms.submit }}
+        </form>
+    </div>
+    <div id="image">
+        <img src="./static/images/histgram.png" alt="ヒストグラム">
+    </div>
+</body>
+
+</html>
