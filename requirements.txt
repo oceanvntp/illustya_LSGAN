@@ -16,8 +16,8 @@ attrs==23.1.0
 # aws-sdk-cpp==1.8.185
 babel==2.12.1
 backcall==0.2.0
-backports==1.0
-backports.functools_lru_cache==1.6.5
+# backports==1.0
+# backports.functools_lru_cache==1.6.5
 beautifulsoup4==4.12.2
 bidict==0.22.1
 blas==1.0
