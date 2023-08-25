@@ -64,9 +64,11 @@ def Generates():
     cfg_form = ConfigForm(request.form)
     # GET メソッドのとき
     if request.method == 'GET':
+        print('----GET----')
         return render_template('index.html', forms=cfg_form)
     # POST メソッドのとき
     elif request.method == 'POST':
+        print('----POST----')
         # ConfigFormの入力がおかしいとき
         if cfg_form.validate() == False:
             return render_template('index.html', forms=cfg_form)
@@ -76,23 +78,30 @@ def Generates():
             threshold = float(request.form['Threshold'])
             repeat = int(request.form['Repeat'])
             max_generate = int(request.form['MaxGenerate'])
+            print('1 ---- get forms----')
             
             set_seed(seed)
             img_preds_ = []
             for _ in range(max_generate):
                 img_tensor, predict_ = generate()     
+                print('2 ----Generate----')
                 img_array = imtensor2imarray(img_tensor)
+                print('3 ----tensor -> array----')
                 img_b64 = array2base64(img_array)
+                print('4 ----array -> b64----')
                 img_b64_data = f'data:image/png;base64,{img_b64}'
                 if predict_ > threshold:
                     img_preds_.append((img_b64_data, predict_))
+                    print('---add image---')
 
                 # judge_ = '本物です！' if predict_ > 0.5 else '偽物です・・・'
             return render_template('result.html', img_preds=img_preds_)
 
 
 if __name__ == '__main__':
-    app.run()
+    print('app run!')
+    app.run(debug=True)
+    
             
             
         
