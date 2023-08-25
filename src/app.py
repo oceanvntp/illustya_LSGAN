@@ -99,6 +99,10 @@ def Generates():
 
 
 if __name__ == '__main__':
+    G = Generator()
+    D = Discriminator()
+    G.load_state_dict(torch.load(f'./netG_epoch_{str(weight_epochs)}.pth', map_location=torch.device('cpu')))
+    D.load_state_dict(torch.load(f'./netD_epoch_{str(weight_epochs)}.pth', map_location=torch.device('cpu')))
     print('app run!')
     app.run(debug=True)
     

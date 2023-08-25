@@ -40,7 +40,7 @@
             {% endfor %}<br>
 
             {{ forms.MaxGenerate.label }}<br>
-            {{ forms.MaxGenerate(value=10000) }}<br>
+            {{ forms.MaxGenerate(value=100) }}<br>
             {% for error in forms.MaxGenerate.errors%}
             <div>{{ error }}</div>
             {% endfor %}<br>
