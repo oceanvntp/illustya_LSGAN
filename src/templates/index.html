@@ -18,7 +18,7 @@
     <div id="wrapper">
         <h1>いらすとや Generater</h1>
         <h2>下の設定を入力してください</h2>
-        <form method="post">
+        <form method="post" enctype = multipart/form-data>
             {{ forms.csrf_token }}
 
             {{ forms.Seed.label }}<br>
